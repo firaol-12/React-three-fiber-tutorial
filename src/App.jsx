@@ -1,33 +1,28 @@
 import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import './App.css'
+import { Group } from 'three'
+
+  const Cube = ({position, size, color}) =>{
+    return(
+      <mesh position={position}>
+        <boxGeometry args={size} />
+        <meshStandardMaterial color={color} />
+      </mesh>
+    )
+  }
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <Canvas>
       {/* <ambientLight /> */}
       <directionalLight position={[0,0,2]} />
-      <mesh position={[1,1,0]}>
-        <boxGeometry args={[1.5, 1.5, 1.5]} />
-        <meshStandardMaterial color="green" />
-      </mesh>
-            
-      <mesh position={[-1,1,0]}>
-        <boxGeometry args={[1.5, 1.5, 1.5]} />
-        <meshStandardMaterial color="red" />
-      </mesh>
 
-            <mesh position={[-1,-1,0]}>
-        <boxGeometry args={[1.5, 1.5, 1.5]} />
-        <meshStandardMaterial color="blue" />
-      </mesh>
-            
-      <mesh position={[1,-1,0]}>
-        <boxGeometry args={[1.5, 1.5, 1.5]} />
-        <meshStandardMaterial color="yellow" />
-      </mesh>
+      <group position={[0,1,0]}>
+        <Cube position={[0, 0, 0]} size={[1, 1, 1]} color="hotpink" />
+      </group>
+
     </Canvas>
   )
 }
