@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
 import './App.css'
 import { Group } from 'three'
 
@@ -41,8 +42,16 @@ function App() {
       {/* <group position={[1,0,0]}> */}
       {/* </group> */}
 
-      <Cube position={[0, 0, 0]} size={[1, 1, 1]} color="hotpink" />
-      
+      {/* <Cube position={[0, 0, 0]} size={[1, 1, 1]} color="hotpink" /> */}
+      <mesh><boxGeometry /><meshStandardMaterial color="red" /></mesh>
+      <OrbitControls
+        enableZoom={true}
+        enablePan={false}
+        autoRotate
+        minPolarAngle={Math.PI / 4}
+        maxPolarAngle={Math.PI / 2}
+        // makeDefault
+      />
 
     </Canvas>
   )
