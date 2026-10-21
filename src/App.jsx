@@ -78,7 +78,7 @@
 
 
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Grid } from "@react-three/drei";
 import Description from "./Description";
 import Car from "./Car";
 
@@ -91,10 +91,26 @@ export default function App() {
 
       <div style={{ width: "50%", height: "100%" }}>
         <Canvas camera={{ position: [0, 1, 5] }}>
+          <color attach="background" args={["#3d3d3d"]} />
           <ambientLight intensity={1} />
           <directionalLight position={[5, 5, 5]} intensity={1.5} />
+
+          <Grid
+            position={[0, 0, 0]}
+            args={[10, 10]}
+            cellSize={0.5}
+            cellThickness={0.6}
+            cellColor="#5a5a5a"
+            sectionSize={2.5}
+            sectionThickness={1.2}
+            sectionColor="#7a7a7a"
+            fadeDistance={30}
+            fadeStrength={1}
+            infiniteGrid
+          />
           <Car />
-          <OrbitControls enablePan={false} />
+          <OrbitControls makeDefault enablePan={false} maxPolarAngle={Math.PI / 2} />
+
         </Canvas>
       </div>
     </div>
